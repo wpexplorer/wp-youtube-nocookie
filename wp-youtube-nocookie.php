@@ -15,12 +15,11 @@ final class WP_Youtube_No_Cookie {
 	 */
 	public function __construct() {
 		add_filter( 'embed_oembed_html', [ $this, 'filter_embed_oembed_html' ], 10, 4 );
+		add_filter( 'the_content', [ $this, 'filter_the_content' ], 100 );
 	}
 
 	/**
 	 * Modify the oEmbed HTMl.
-	 *
-	 * @link https://developer.wordpress.org/reference/hooks/embed_oembed_html/
 	 */
 	public function filter_embed_oembed_html( $html, $url, $attr, $post_id ) {
 		if ( str_contains( $url, 'youtube.com' ) ) {
@@ -29,5 +28,16 @@ final class WP_Youtube_No_Cookie {
 		return $html;
 	}
 
+	/**
+	 * Modify the post content.
+	 */
+	public function filter_the_content( $content ) {
+		if ( str_contains( $content, 'youtube.com/embed' ) ) {
+			$content = str_replace( 'youtube.com/embed', 'youtube-nocookie.com/embed', $content );
+		}
+		return $content;
+	}
+
 }
+
 new WP_Youtube_No_Cookie;
