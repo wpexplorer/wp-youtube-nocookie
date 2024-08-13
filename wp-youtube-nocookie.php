@@ -14,15 +14,15 @@ final class WP_Youtube_No_Cookie {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_filter( 'embed_oembed_html', [ $this, 'filter_embed_oembed_html' ], 10, 4 );
+		add_filter( 'embed_oembed_html', [ $this, 'filter_embed_oembed_html' ] );
 		add_filter( 'the_content', [ $this, 'filter_the_content' ], 100 );
 	}
 
 	/**
 	 * Modify the oEmbed HTMl.
 	 */
-	public function filter_embed_oembed_html( $html, $url, $attr, $post_id ) {
-		if ( str_contains( $url, 'youtube.com' ) ) {
+	public function filter_embed_oembed_html( $html ) {
+		if ( str_contains( $html, 'youtube.com' ) ) {
 			$html = str_replace( 'youtube.com', 'youtube-nocookie.com', $html );
 		}
 		return $html;
