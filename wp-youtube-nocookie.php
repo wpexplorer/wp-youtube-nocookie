@@ -6,8 +6,8 @@
  * Version:           1.1
  * Requires at least: 6.6
  * Requires PHP:      8.0
- * Author:            WPExplorer
- * Author URI:        https://www.wpexplorer.com/
+ * Author:            bkno
+ * Author URI:        https://digitalgarden.co/
  * License:           GPL v3 or later
  * License URI:       https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain:       wp-youtube-nocookie
